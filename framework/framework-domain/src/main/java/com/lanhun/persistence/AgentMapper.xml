@@ -1,0 +1,460 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lanhun.persistence.AgentMapper" >
+  <resultMap id="BaseResultMap" type="com.lanhun.persistence.Agent" >
+    <id column="Id" property="id" jdbcType="INTEGER" />
+    <result column="LoginName" property="loginname" jdbcType="NVARCHAR" />
+    <result column="Password" property="password" jdbcType="NVARCHAR" />
+    <result column="SaltKey" property="saltkey" jdbcType="NVARCHAR" />
+    <result column="Email" property="email" jdbcType="NVARCHAR" />
+    <result column="AgentType" property="agenttype" jdbcType="SMALLINT" />
+    <result column="Name" property="name" jdbcType="NVARCHAR" />
+    <result column="AgentCode" property="agentcode" jdbcType="NVARCHAR" />
+    <result column="CardType" property="cardtype" jdbcType="SMALLINT" />
+    <result column="CardNum" property="cardnum" jdbcType="NVARCHAR" />
+    <result column="CompanyName" property="companyname" jdbcType="NVARCHAR" />
+    <result column="CompanyCode" property="companycode" jdbcType="NVARCHAR" />
+    <result column="ContactName" property="contactname" jdbcType="NVARCHAR" />
+    <result column="Gender" property="gender" jdbcType="SMALLINT" />
+    <result column="ContactPhone" property="contactphone" jdbcType="NVARCHAR" />
+    <result column="ContactOnline" property="contactonline" jdbcType="NVARCHAR" />
+    <result column="AreaIds" property="areaids" jdbcType="NVARCHAR" />
+    <result column="AreaNames" property="areanames" jdbcType="NVARCHAR" />
+    <result column="Address" property="address" jdbcType="NVARCHAR" />
+    <result column="ZipCode" property="zipcode" jdbcType="NVARCHAR" />
+    <result column="AccountType" property="accounttype" jdbcType="SMALLINT" />
+    <result column="BankName" property="bankname" jdbcType="NVARCHAR" />
+    <result column="BankAccount" property="bankaccount" jdbcType="NVARCHAR" />
+    <result column="BankAccountName" property="bankaccountname" jdbcType="NVARCHAR" />
+    <result column="AlipayAccount" property="alipayaccount" jdbcType="NVARCHAR" />
+    <result column="AlipayAccountName" property="alipayaccountname" jdbcType="NVARCHAR" />
+    <result column="AgentGrade" property="agentgrade" jdbcType="SMALLINT" />
+    <result column="CreateTime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="CreateById" property="createbyid" jdbcType="INTEGER" />
+    <result column="UpdateTime" property="updatetime" jdbcType="TIMESTAMP" />
+    <result column="UpdateById" property="updatebyid" jdbcType="INTEGER" />
+    <result column="ExpandEmployeeId" property="expandemployeeid" jdbcType="INTEGER" />
+    <result column="ExpandEmployeeName" property="expandemployeename" jdbcType="NVARCHAR" />
+    <result column="State" property="state" jdbcType="SMALLINT" />
+    <result column="Deleted" property="deleted" jdbcType="BIT" />
+    <result column="AgentAccountType" property="agentaccounttype" jdbcType="SMALLINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    Id, LoginName, Password, SaltKey, Email, AgentType, Name, AgentCode, CardType, CardNum, 
+    CompanyName, CompanyCode, ContactName, Gender, ContactPhone, ContactOnline, AreaIds, 
+    AreaNames, Address, ZipCode, AccountType, BankName, BankAccount, BankAccountName, 
+    AlipayAccount, AlipayAccountName, AgentGrade, CreateTime, CreateById, UpdateTime, 
+    UpdateById, ExpandEmployeeId, ExpandEmployeeName, State, Deleted, AgentAccountType
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from Agent
+    where Id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from Agent
+    where Id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.lanhun.persistence.Agent" >
+    insert into Agent (Id, LoginName, Password, 
+      SaltKey, Email, AgentType, 
+      Name, AgentCode, CardType, 
+      CardNum, CompanyName, CompanyCode, 
+      ContactName, Gender, ContactPhone, 
+      ContactOnline, AreaIds, AreaNames, 
+      Address, ZipCode, AccountType, 
+      BankName, BankAccount, BankAccountName, 
+      AlipayAccount, AlipayAccountName, AgentGrade, 
+      CreateTime, CreateById, UpdateTime, 
+      UpdateById, ExpandEmployeeId, ExpandEmployeeName, 
+      State, Deleted, AgentAccountType
+      )
+    values (#{id,jdbcType=INTEGER}, #{loginname,jdbcType=NVARCHAR}, #{password,jdbcType=NVARCHAR}, 
+      #{saltkey,jdbcType=NVARCHAR}, #{email,jdbcType=NVARCHAR}, #{agenttype,jdbcType=SMALLINT}, 
+      #{name,jdbcType=NVARCHAR}, #{agentcode,jdbcType=NVARCHAR}, #{cardtype,jdbcType=SMALLINT}, 
+      #{cardnum,jdbcType=NVARCHAR}, #{companyname,jdbcType=NVARCHAR}, #{companycode,jdbcType=NVARCHAR}, 
+      #{contactname,jdbcType=NVARCHAR}, #{gender,jdbcType=SMALLINT}, #{contactphone,jdbcType=NVARCHAR}, 
+      #{contactonline,jdbcType=NVARCHAR}, #{areaids,jdbcType=NVARCHAR}, #{areanames,jdbcType=NVARCHAR}, 
+      #{address,jdbcType=NVARCHAR}, #{zipcode,jdbcType=NVARCHAR}, #{accounttype,jdbcType=SMALLINT}, 
+      #{bankname,jdbcType=NVARCHAR}, #{bankaccount,jdbcType=NVARCHAR}, #{bankaccountname,jdbcType=NVARCHAR}, 
+      #{alipayaccount,jdbcType=NVARCHAR}, #{alipayaccountname,jdbcType=NVARCHAR}, #{agentgrade,jdbcType=SMALLINT}, 
+      #{createtime,jdbcType=TIMESTAMP}, #{createbyid,jdbcType=INTEGER}, #{updatetime,jdbcType=TIMESTAMP}, 
+      #{updatebyid,jdbcType=INTEGER}, #{expandemployeeid,jdbcType=INTEGER}, #{expandemployeename,jdbcType=NVARCHAR}, 
+      #{state,jdbcType=SMALLINT}, #{deleted,jdbcType=BIT}, #{agentaccounttype,jdbcType=SMALLINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.lanhun.persistence.Agent" >
+    insert into Agent
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        Id,
+      </if>
+      <if test="loginname != null" >
+        LoginName,
+      </if>
+      <if test="password != null" >
+        Password,
+      </if>
+      <if test="saltkey != null" >
+        SaltKey,
+      </if>
+      <if test="email != null" >
+        Email,
+      </if>
+      <if test="agenttype != null" >
+        AgentType,
+      </if>
+      <if test="name != null" >
+        Name,
+      </if>
+      <if test="agentcode != null" >
+        AgentCode,
+      </if>
+      <if test="cardtype != null" >
+        CardType,
+      </if>
+      <if test="cardnum != null" >
+        CardNum,
+      </if>
+      <if test="companyname != null" >
+        CompanyName,
+      </if>
+      <if test="companycode != null" >
+        CompanyCode,
+      </if>
+      <if test="contactname != null" >
+        ContactName,
+      </if>
+      <if test="gender != null" >
+        Gender,
+      </if>
+      <if test="contactphone != null" >
+        ContactPhone,
+      </if>
+      <if test="contactonline != null" >
+        ContactOnline,
+      </if>
+      <if test="areaids != null" >
+        AreaIds,
+      </if>
+      <if test="areanames != null" >
+        AreaNames,
+      </if>
+      <if test="address != null" >
+        Address,
+      </if>
+      <if test="zipcode != null" >
+        ZipCode,
+      </if>
+      <if test="accounttype != null" >
+        AccountType,
+      </if>
+      <if test="bankname != null" >
+        BankName,
+      </if>
+      <if test="bankaccount != null" >
+        BankAccount,
+      </if>
+      <if test="bankaccountname != null" >
+        BankAccountName,
+      </if>
+      <if test="alipayaccount != null" >
+        AlipayAccount,
+      </if>
+      <if test="alipayaccountname != null" >
+        AlipayAccountName,
+      </if>
+      <if test="agentgrade != null" >
+        AgentGrade,
+      </if>
+      <if test="createtime != null" >
+        CreateTime,
+      </if>
+      <if test="createbyid != null" >
+        CreateById,
+      </if>
+      <if test="updatetime != null" >
+        UpdateTime,
+      </if>
+      <if test="updatebyid != null" >
+        UpdateById,
+      </if>
+      <if test="expandemployeeid != null" >
+        ExpandEmployeeId,
+      </if>
+      <if test="expandemployeename != null" >
+        ExpandEmployeeName,
+      </if>
+      <if test="state != null" >
+        State,
+      </if>
+      <if test="deleted != null" >
+        Deleted,
+      </if>
+      <if test="agentaccounttype != null" >
+        AgentAccountType,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="loginname != null" >
+        #{loginname,jdbcType=NVARCHAR},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=NVARCHAR},
+      </if>
+      <if test="saltkey != null" >
+        #{saltkey,jdbcType=NVARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=NVARCHAR},
+      </if>
+      <if test="agenttype != null" >
+        #{agenttype,jdbcType=SMALLINT},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=NVARCHAR},
+      </if>
+      <if test="agentcode != null" >
+        #{agentcode,jdbcType=NVARCHAR},
+      </if>
+      <if test="cardtype != null" >
+        #{cardtype,jdbcType=SMALLINT},
+      </if>
+      <if test="cardnum != null" >
+        #{cardnum,jdbcType=NVARCHAR},
+      </if>
+      <if test="companyname != null" >
+        #{companyname,jdbcType=NVARCHAR},
+      </if>
+      <if test="companycode != null" >
+        #{companycode,jdbcType=NVARCHAR},
+      </if>
+      <if test="contactname != null" >
+        #{contactname,jdbcType=NVARCHAR},
+      </if>
+      <if test="gender != null" >
+        #{gender,jdbcType=SMALLINT},
+      </if>
+      <if test="contactphone != null" >
+        #{contactphone,jdbcType=NVARCHAR},
+      </if>
+      <if test="contactonline != null" >
+        #{contactonline,jdbcType=NVARCHAR},
+      </if>
+      <if test="areaids != null" >
+        #{areaids,jdbcType=NVARCHAR},
+      </if>
+      <if test="areanames != null" >
+        #{areanames,jdbcType=NVARCHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=NVARCHAR},
+      </if>
+      <if test="zipcode != null" >
+        #{zipcode,jdbcType=NVARCHAR},
+      </if>
+      <if test="accounttype != null" >
+        #{accounttype,jdbcType=SMALLINT},
+      </if>
+      <if test="bankname != null" >
+        #{bankname,jdbcType=NVARCHAR},
+      </if>
+      <if test="bankaccount != null" >
+        #{bankaccount,jdbcType=NVARCHAR},
+      </if>
+      <if test="bankaccountname != null" >
+        #{bankaccountname,jdbcType=NVARCHAR},
+      </if>
+      <if test="alipayaccount != null" >
+        #{alipayaccount,jdbcType=NVARCHAR},
+      </if>
+      <if test="alipayaccountname != null" >
+        #{alipayaccountname,jdbcType=NVARCHAR},
+      </if>
+      <if test="agentgrade != null" >
+        #{agentgrade,jdbcType=SMALLINT},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createbyid != null" >
+        #{createbyid,jdbcType=INTEGER},
+      </if>
+      <if test="updatetime != null" >
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatebyid != null" >
+        #{updatebyid,jdbcType=INTEGER},
+      </if>
+      <if test="expandemployeeid != null" >
+        #{expandemployeeid,jdbcType=INTEGER},
+      </if>
+      <if test="expandemployeename != null" >
+        #{expandemployeename,jdbcType=NVARCHAR},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=SMALLINT},
+      </if>
+      <if test="deleted != null" >
+        #{deleted,jdbcType=BIT},
+      </if>
+      <if test="agentaccounttype != null" >
+        #{agentaccounttype,jdbcType=SMALLINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lanhun.persistence.Agent" >
+    update Agent
+    <set >
+      <if test="loginname != null" >
+        LoginName = #{loginname,jdbcType=NVARCHAR},
+      </if>
+      <if test="password != null" >
+        Password = #{password,jdbcType=NVARCHAR},
+      </if>
+      <if test="saltkey != null" >
+        SaltKey = #{saltkey,jdbcType=NVARCHAR},
+      </if>
+      <if test="email != null" >
+        Email = #{email,jdbcType=NVARCHAR},
+      </if>
+      <if test="agenttype != null" >
+        AgentType = #{agenttype,jdbcType=SMALLINT},
+      </if>
+      <if test="name != null" >
+        Name = #{name,jdbcType=NVARCHAR},
+      </if>
+      <if test="agentcode != null" >
+        AgentCode = #{agentcode,jdbcType=NVARCHAR},
+      </if>
+      <if test="cardtype != null" >
+        CardType = #{cardtype,jdbcType=SMALLINT},
+      </if>
+      <if test="cardnum != null" >
+        CardNum = #{cardnum,jdbcType=NVARCHAR},
+      </if>
+      <if test="companyname != null" >
+        CompanyName = #{companyname,jdbcType=NVARCHAR},
+      </if>
+      <if test="companycode != null" >
+        CompanyCode = #{companycode,jdbcType=NVARCHAR},
+      </if>
+      <if test="contactname != null" >
+        ContactName = #{contactname,jdbcType=NVARCHAR},
+      </if>
+      <if test="gender != null" >
+        Gender = #{gender,jdbcType=SMALLINT},
+      </if>
+      <if test="contactphone != null" >
+        ContactPhone = #{contactphone,jdbcType=NVARCHAR},
+      </if>
+      <if test="contactonline != null" >
+        ContactOnline = #{contactonline,jdbcType=NVARCHAR},
+      </if>
+      <if test="areaids != null" >
+        AreaIds = #{areaids,jdbcType=NVARCHAR},
+      </if>
+      <if test="areanames != null" >
+        AreaNames = #{areanames,jdbcType=NVARCHAR},
+      </if>
+      <if test="address != null" >
+        Address = #{address,jdbcType=NVARCHAR},
+      </if>
+      <if test="zipcode != null" >
+        ZipCode = #{zipcode,jdbcType=NVARCHAR},
+      </if>
+      <if test="accounttype != null" >
+        AccountType = #{accounttype,jdbcType=SMALLINT},
+      </if>
+      <if test="bankname != null" >
+        BankName = #{bankname,jdbcType=NVARCHAR},
+      </if>
+      <if test="bankaccount != null" >
+        BankAccount = #{bankaccount,jdbcType=NVARCHAR},
+      </if>
+      <if test="bankaccountname != null" >
+        BankAccountName = #{bankaccountname,jdbcType=NVARCHAR},
+      </if>
+      <if test="alipayaccount != null" >
+        AlipayAccount = #{alipayaccount,jdbcType=NVARCHAR},
+      </if>
+      <if test="alipayaccountname != null" >
+        AlipayAccountName = #{alipayaccountname,jdbcType=NVARCHAR},
+      </if>
+      <if test="agentgrade != null" >
+        AgentGrade = #{agentgrade,jdbcType=SMALLINT},
+      </if>
+      <if test="createtime != null" >
+        CreateTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createbyid != null" >
+        CreateById = #{createbyid,jdbcType=INTEGER},
+      </if>
+      <if test="updatetime != null" >
+        UpdateTime = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatebyid != null" >
+        UpdateById = #{updatebyid,jdbcType=INTEGER},
+      </if>
+      <if test="expandemployeeid != null" >
+        ExpandEmployeeId = #{expandemployeeid,jdbcType=INTEGER},
+      </if>
+      <if test="expandemployeename != null" >
+        ExpandEmployeeName = #{expandemployeename,jdbcType=NVARCHAR},
+      </if>
+      <if test="state != null" >
+        State = #{state,jdbcType=SMALLINT},
+      </if>
+      <if test="deleted != null" >
+        Deleted = #{deleted,jdbcType=BIT},
+      </if>
+      <if test="agentaccounttype != null" >
+        AgentAccountType = #{agentaccounttype,jdbcType=SMALLINT},
+      </if>
+    </set>
+    where Id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lanhun.persistence.Agent" >
+    update Agent
+    set LoginName = #{loginname,jdbcType=NVARCHAR},
+      Password = #{password,jdbcType=NVARCHAR},
+      SaltKey = #{saltkey,jdbcType=NVARCHAR},
+      Email = #{email,jdbcType=NVARCHAR},
+      AgentType = #{agenttype,jdbcType=SMALLINT},
+      Name = #{name,jdbcType=NVARCHAR},
+      AgentCode = #{agentcode,jdbcType=NVARCHAR},
+      CardType = #{cardtype,jdbcType=SMALLINT},
+      CardNum = #{cardnum,jdbcType=NVARCHAR},
+      CompanyName = #{companyname,jdbcType=NVARCHAR},
+      CompanyCode = #{companycode,jdbcType=NVARCHAR},
+      ContactName = #{contactname,jdbcType=NVARCHAR},
+      Gender = #{gender,jdbcType=SMALLINT},
+      ContactPhone = #{contactphone,jdbcType=NVARCHAR},
+      ContactOnline = #{contactonline,jdbcType=NVARCHAR},
+      AreaIds = #{areaids,jdbcType=NVARCHAR},
+      AreaNames = #{areanames,jdbcType=NVARCHAR},
+      Address = #{address,jdbcType=NVARCHAR},
+      ZipCode = #{zipcode,jdbcType=NVARCHAR},
+      AccountType = #{accounttype,jdbcType=SMALLINT},
+      BankName = #{bankname,jdbcType=NVARCHAR},
+      BankAccount = #{bankaccount,jdbcType=NVARCHAR},
+      BankAccountName = #{bankaccountname,jdbcType=NVARCHAR},
+      AlipayAccount = #{alipayaccount,jdbcType=NVARCHAR},
+      AlipayAccountName = #{alipayaccountname,jdbcType=NVARCHAR},
+      AgentGrade = #{agentgrade,jdbcType=SMALLINT},
+      CreateTime = #{createtime,jdbcType=TIMESTAMP},
+      CreateById = #{createbyid,jdbcType=INTEGER},
+      UpdateTime = #{updatetime,jdbcType=TIMESTAMP},
+      UpdateById = #{updatebyid,jdbcType=INTEGER},
+      ExpandEmployeeId = #{expandemployeeid,jdbcType=INTEGER},
+      ExpandEmployeeName = #{expandemployeename,jdbcType=NVARCHAR},
+      State = #{state,jdbcType=SMALLINT},
+      Deleted = #{deleted,jdbcType=BIT},
+      AgentAccountType = #{agentaccounttype,jdbcType=SMALLINT}
+    where Id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

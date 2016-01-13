@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lanhun.persistence.ActivitynationalMapper" >
+  <resultMap id="BaseResultMap" type="com.lanhun.persistence.Activitynational" >
+    <id column="PrizeId" property="prizeid" jdbcType="INTEGER" />
+    <result column="OrderNum" property="ordernum" jdbcType="NVARCHAR" />
+    <result column="Income" property="income" jdbcType="INTEGER" />
+    <result column="Prize" property="prize" jdbcType="NVARCHAR" />
+    <result column="CreateTime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="PartnerId" property="partnerid" jdbcType="INTEGER" />
+    <result column="ProductId" property="productid" jdbcType="INTEGER" />
+    <result column="PrizeType" property="prizetype" jdbcType="INTEGER" />
+    <result column="OrderPrice" property="orderprice" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    PrizeId, OrderNum, Income, Prize, CreateTime, PartnerId, ProductId, PrizeType, OrderPrice
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from ActivityNational
+    where PrizeId = #{prizeid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from ActivityNational
+    where PrizeId = #{prizeid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.lanhun.persistence.Activitynational" >
+    insert into ActivityNational (PrizeId, OrderNum, Income, 
+      Prize, CreateTime, PartnerId, 
+      ProductId, PrizeType, OrderPrice
+      )
+    values (#{prizeid,jdbcType=INTEGER}, #{ordernum,jdbcType=NVARCHAR}, #{income,jdbcType=INTEGER}, 
+      #{prize,jdbcType=NVARCHAR}, #{createtime,jdbcType=TIMESTAMP}, #{partnerid,jdbcType=INTEGER}, 
+      #{productid,jdbcType=INTEGER}, #{prizetype,jdbcType=INTEGER}, #{orderprice,jdbcType=DECIMAL}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.lanhun.persistence.Activitynational" >
+    insert into ActivityNational
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="prizeid != null" >
+        PrizeId,
+      </if>
+      <if test="ordernum != null" >
+        OrderNum,
+      </if>
+      <if test="income != null" >
+        Income,
+      </if>
+      <if test="prize != null" >
+        Prize,
+      </if>
+      <if test="createtime != null" >
+        CreateTime,
+      </if>
+      <if test="partnerid != null" >
+        PartnerId,
+      </if>
+      <if test="productid != null" >
+        ProductId,
+      </if>
+      <if test="prizetype != null" >
+        PrizeType,
+      </if>
+      <if test="orderprice != null" >
+        OrderPrice,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="prizeid != null" >
+        #{prizeid,jdbcType=INTEGER},
+      </if>
+      <if test="ordernum != null" >
+        #{ordernum,jdbcType=NVARCHAR},
+      </if>
+      <if test="income != null" >
+        #{income,jdbcType=INTEGER},
+      </if>
+      <if test="prize != null" >
+        #{prize,jdbcType=NVARCHAR},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="partnerid != null" >
+        #{partnerid,jdbcType=INTEGER},
+      </if>
+      <if test="productid != null" >
+        #{productid,jdbcType=INTEGER},
+      </if>
+      <if test="prizetype != null" >
+        #{prizetype,jdbcType=INTEGER},
+      </if>
+      <if test="orderprice != null" >
+        #{orderprice,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lanhun.persistence.Activitynational" >
+    update ActivityNational
+    <set >
+      <if test="ordernum != null" >
+        OrderNum = #{ordernum,jdbcType=NVARCHAR},
+      </if>
+      <if test="income != null" >
+        Income = #{income,jdbcType=INTEGER},
+      </if>
+      <if test="prize != null" >
+        Prize = #{prize,jdbcType=NVARCHAR},
+      </if>
+      <if test="createtime != null" >
+        CreateTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="partnerid != null" >
+        PartnerId = #{partnerid,jdbcType=INTEGER},
+      </if>
+      <if test="productid != null" >
+        ProductId = #{productid,jdbcType=INTEGER},
+      </if>
+      <if test="prizetype != null" >
+        PrizeType = #{prizetype,jdbcType=INTEGER},
+      </if>
+      <if test="orderprice != null" >
+        OrderPrice = #{orderprice,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where PrizeId = #{prizeid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lanhun.persistence.Activitynational" >
+    update ActivityNational
+    set OrderNum = #{ordernum,jdbcType=NVARCHAR},
+      Income = #{income,jdbcType=INTEGER},
+      Prize = #{prize,jdbcType=NVARCHAR},
+      CreateTime = #{createtime,jdbcType=TIMESTAMP},
+      PartnerId = #{partnerid,jdbcType=INTEGER},
+      ProductId = #{productid,jdbcType=INTEGER},
+      PrizeType = #{prizetype,jdbcType=INTEGER},
+      OrderPrice = #{orderprice,jdbcType=DECIMAL}
+    where PrizeId = #{prizeid,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration >
+ 	<classPathEntry
+        location="D://java//maven//com//microsoft//sqljdbc4j//1//sqljdbc4j-1.jar" />
+	<context id="context1">
+		<commentGenerator>
+			<property name="suppressAllComments" value="true" />
+		</commentGenerator>
+
+		<jdbcConnection driverClass="com.microsoft.sqlserver.jdbc.SQLServerDriver" connectionURL="jdbc:sqlserver://192.168.10.76:1433;DatabaseName=HzInsCPP" userId="it" password="123456" />
+		<javaModelGenerator targetPackage="com.hzins.test.base.domain" targetProject="ServerTest" />
+		<sqlMapGenerator targetPackage="com.hzins.test.base.persistence" targetProject="ServerTest" />
+		<javaClientGenerator targetPackage="com.hzins.test.base.persistence" targetProject="ServerTest" type="XMLMAPPER" >
+		<property name="rootInterface" value="com.hzins.persistence.base.BaseMapper"/>
+		</javaClientGenerator>
+
+		<table tableName="ActivityNational" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false" />
+		<table tableName="Agent" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false" />
+
+	</context>
+</generatorConfiguration>
